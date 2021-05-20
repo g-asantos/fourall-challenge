@@ -12,3 +12,6 @@ CREATE TABLE IF NOT EXISTS movies (
     director  VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )  ENGINE=INNOD
+
+INSERT INTO movierental.movies (id,title, director, rented) VALUES ('$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu','Pulp Fiction', 'Tarantino', false)
+INSERT INTO movierental.movies (id,title, director, rented) VALUES ('$2a$10$NYFZ/8WaQ3Qb6FCs.00jce4nxX9w7AkgWVsQCG6oUwTAcZqP9Flqu','Grease', 'Randal Kleiser', true)

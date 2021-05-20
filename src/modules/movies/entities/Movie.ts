@@ -12,6 +12,9 @@ class Movie {
     @Column()
     director: string;
 
+    @Column()
+    rented: boolean;
+
     @CreateDateColumn()
     created_at: Date;
 
