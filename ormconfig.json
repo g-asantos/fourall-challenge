@@ -1,0 +1,14 @@
+
+{
+  "type": "mysql",
+  "port": 3306,
+  "host": "localhost",
+  "username": "root",
+  "password": "admin",
+  "database": "movierental",
+  "migrations": ["./src/database/migrations/*.ts"],
+  "entities": ["./src/modules/**/entities/*.ts"],
+  "cli": {
+    "migrationsDir": "./src/database/migrations"
+  }
+}
