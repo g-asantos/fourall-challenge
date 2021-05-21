@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import { CreateUserUseCase } from './CreateUserUseCase';
+import {IUser} from '../../dtos/IUserDto'
 
 class CreateUserController {
     async handle(request: Request, response: Response): Promise<Response> {
@@ -15,7 +16,12 @@ class CreateUserController {
             password,
         });
 
-        return response.status(201).send();
+        const formattedUser: IUser = {
+          name,
+          email
+        }
+
+        return response.status(201).send(formattedUser);
     }
 }
 

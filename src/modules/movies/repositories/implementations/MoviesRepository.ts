@@ -1,4 +1,5 @@
 import { getRepository, Repository,getManager } from 'typeorm';
+import AppError from '../../../../shared/errors/AppError';
 
 import { Movie } from '../../entities/Movie';
 import { IMoviesRepository } from '../IMoviesRepository';
@@ -16,25 +17,33 @@ class MoviesRepository implements IMoviesRepository {
         return movies;
     }
 
-    async findByName(name: string): Promise<Movie[]> {
-        const movie = this.entityManager.query(`SELECT * FROM movies WHERE title = "${name}"`);
+    async findByTitle(title: string): Promise<Movie[]> {
+        const movie = this.entityManager.query(`SELECT * FROM movies WHERE title = "${title}"`);
         return movie;
     }
 
-    async rentMovie(movieId: string): Promise<Movie> {
-      const movie = await this.repository.findOne({
-        id: movieId
-      });
+    async rentMovie(title: string): Promise<Movie> {
+      const movies = await this.entityManager.query(`SELECT * FROM movies WHERE title = "${title}"`);
 
-      movie.rented = true;
+      const availableMovies: Movie[] = movies.filter((movie: Movie) => movie.rented !== true);
 
-      return this.repository.save(movie);
+      if(availableMovies.length === 0){
+        throw new AppError('Movie does not exist');
+      }
+
+      availableMovies[0].rented = true;
+
+      return this.repository.save(availableMovies[0]);
 
     }
     async returnMovie(movieId: string): Promise<Movie> {
       const movie = await this.repository.findOne({
         id: movieId
       });
+
+      if(!movie){
+        throw new AppError('Movie does not exist');
+      }
 
       movie.rented = false;
 

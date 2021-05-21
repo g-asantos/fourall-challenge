@@ -11,7 +11,7 @@ class GetMovieByTitleUseCase {
     ) {}
 
     async execute(title: string): Promise<Movie[]> {
-        const movies = await this.moviesRepository.findByName(title);
+        const movies = await this.moviesRepository.findByTitle(title);
 
         return movies;
     }

@@ -6,11 +6,11 @@ import { RentAMovieUseCase } from './RentAMovieUseCase';
 
 class RentAMovieController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const {movieId} = request.body;
+        const {title} = request.body;
 
         const rentAMovieUseCase = container.resolve(RentAMovieUseCase);
 
-        const movieRented = await rentAMovieUseCase.execute(movieId);
+        const movieRented = await rentAMovieUseCase.execute(title);
 
         return response.json(movieRented);
     }

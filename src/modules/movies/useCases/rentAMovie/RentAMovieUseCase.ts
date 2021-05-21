@@ -10,8 +10,8 @@ class RentAMovieUseCase {
         private moviesRepository: IMoviesRepository,
     ) {}
 
-    async execute(movieId: string): Promise<Movie> {
-        const movieRented = await this.moviesRepository.rentMovie(movieId);
+    async execute(title: string): Promise<Movie> {
+        const movieRented = await this.moviesRepository.rentMovie(title);
         return movieRented;
     }
 }

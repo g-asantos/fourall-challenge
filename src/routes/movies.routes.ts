@@ -6,6 +6,7 @@ import { GetAllMoviesController } from '../modules/movies/useCases/getAllMovies/
 import { GetMovieByTitleController } from '../modules/movies/useCases/getMovieByTitle/GetMovieByTitleController';
 import { RentAMovieController } from '../modules/movies/useCases/rentAMovie/RentAMovieController';
 import { ReturnAMovieController } from '../modules/movies/useCases/returnAMovie/ReturnAMovieController';
+import ensureAuthenticated from '../modules/users/middlewares/ensureAuthenticated';
 
 
 const moviesRoutes = Router();
@@ -17,6 +18,8 @@ const rentAMovieController = new RentAMovieController();
 const returnAMovieController = new ReturnAMovieController();
 
 const getMovieByTitle = new GetMovieByTitleController();
+
+moviesRoutes.use(ensureAuthenticated);
 
 moviesRoutes.get('/', getAllMoviesController.handle);
 

@@ -1,6 +1,7 @@
 import { getRepository, Repository } from 'typeorm';
 
 import { ICreateUserDTO } from '../../dtos/ICreateUserDto';
+import { IRequest, IResponse } from '../../dtos/ILoginUserDto';
 import { User } from '../../entities/User';
 import { IUsersRepository } from '../IUsersRepository';
 
@@ -36,6 +37,7 @@ class UsersRepository implements IUsersRepository {
 
         await this.repository.save(user);
     }
+
 }
 
 export { UsersRepository };
