@@ -4,16 +4,16 @@ import { Movie } from '../../entities/Movie';
 import { IMoviesRepository } from '../../repositories/IMoviesRepository';
 
 @injectable()
-class GetAllMoviesUseCase {
+class ReturnAMovieUseCase {
     constructor(
         @inject('MoviesRepository')
         private moviesRepository: IMoviesRepository,
     ) {}
 
-    async execute(): Promise<Movie[]> {
-        const movies = await this.moviesRepository.list();
-        return movies;
+    async execute(movieId: string): Promise<Movie> {
+        const movieRented = await this.moviesRepository.returnMovie(movieId);
+        return movieRented;
     }
 }
 
-export { GetAllMoviesUseCase };
+export { ReturnAMovieUseCase };

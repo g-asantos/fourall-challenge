@@ -1,27 +1,23 @@
-import { getRepository, Repository } from 'typeorm';
+import { getRepository, Repository,getManager } from 'typeorm';
 
 import { Movie } from '../../entities/Movie';
 import { IMoviesRepository } from '../IMoviesRepository';
 
 class MoviesRepository implements IMoviesRepository {
     private repository: Repository<Movie>;
-
-    private static INSTANCE: MoviesRepository;
+    private entityManager = getManager();
 
     constructor() {
         this.repository = getRepository(Movie);
     }
 
     async list(): Promise<Movie[]> {
-        const movies = await this.repository.find();
-        console.log(movies, "here");
+        const movies = await this.entityManager.query(`SELECT * FROM movies`);
         return movies;
     }
 
-    async findByName(name: string): Promise<Movie> {
-        const movie = await this.repository.findOne(
-            name
-        );
+    async findByName(name: string): Promise<Movie[]> {
+        const movie = this.entityManager.query(`SELECT * FROM movies WHERE title = "${name}"`);
         return movie;
     }
 

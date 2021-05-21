@@ -7,12 +7,13 @@ import { IMoviesRepository } from '../../modules/movies/repositories/IMoviesRepo
 import { MoviesRepository } from '../../modules/movies/repositories/implementations/MoviesRepository';
 
 
+container.registerSingleton<IMoviesRepository>(
+  'MoviesRepository',
+  MoviesRepository,
+);
+
 container.registerSingleton<IUsersRepository>(
     'UsersRepository',
     UsersRepository,
 );
 
-container.registerSingleton<IMoviesRepository>(
-  'MoviesRepository',
-  MoviesRepository,
-);
