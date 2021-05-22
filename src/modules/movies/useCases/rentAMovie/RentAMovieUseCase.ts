@@ -1,5 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
+
 import { Movie } from '../../entities/Movie';
 import { IMoviesRepository } from '../../repositories/IMoviesRepository';
 
@@ -12,6 +13,7 @@ class RentAMovieUseCase {
 
     async execute(title: string): Promise<Movie> {
         const movieRented = await this.moviesRepository.rentMovie(title);
+
         return movieRented;
     }
 }

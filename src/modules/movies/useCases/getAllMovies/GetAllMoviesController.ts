@@ -10,7 +10,14 @@ class GetAllMoviesController {
 
         const all = await getAllMoviesUseCase.execute();
 
-        return response.json(all);
+        const moviesFormatted = all.map(movie => {
+          return {
+            ...movie,
+            rented: Boolean(movie.rented)
+          }
+        })
+
+        return response.json(moviesFormatted);
     }
 }
 

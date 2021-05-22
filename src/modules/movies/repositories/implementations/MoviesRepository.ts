@@ -28,7 +28,7 @@ class MoviesRepository implements IMoviesRepository {
       const availableMovies: Movie[] = movies.filter((movie: Movie) => movie.rented !== true);
 
       if(availableMovies.length === 0){
-        throw new AppError('Movie does not exist');
+        throw new AppError('Movie does not available');
       }
 
       availableMovies[0].rented = true;
