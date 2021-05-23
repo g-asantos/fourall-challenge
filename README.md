@@ -17,7 +17,7 @@ Get in the project's path, then install the dependencies with:
 yarn install
 ```
 
-Set up the .env.local like the .env.example with your jwt secret.
+Set up the .env like the .env.example with your jwt secret.
 
 Rewrite ormconfig.json to point to your database, then run:
 
