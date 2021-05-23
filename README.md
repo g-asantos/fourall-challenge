@@ -19,7 +19,7 @@ yarn install
 
 Set up the .env like the .env.example with your jwt secret.
 
-Rewrite ormconfig.json to point to your database, then run:
+Rewrite ormconfig.json to point to your mysql database, then run:
 
 ```sh
 yarn typeorm migration:run
