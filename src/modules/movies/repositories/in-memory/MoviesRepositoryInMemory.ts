@@ -1,3 +1,4 @@
+import AppError from "../../../../shared/errors/AppError";
 import { Movie } from "../../entities/Movie";
 import { IMoviesRepository } from "../IMoviesRepository";
 
@@ -41,6 +42,10 @@ class MoviesRepositoryInMemory implements IMoviesRepository{
 
     const availableMovies = movieFound.filter((movie: Movie) => movie.rented !== true);
 
+    if(availableMovies.length === 0){
+      throw new AppError('Movie is not available');
+    }
+
     availableMovies[0].rented = true;
 
 
@@ -52,6 +57,13 @@ class MoviesRepositoryInMemory implements IMoviesRepository{
     return availableMovies[0];
   }
   async returnMovie(movieId: string): Promise<Movie> {
+
+    const movie = this.movies.find((movie: Movie) => movie.id === movieId);
+
+    if(!movie){
+      throw new AppError('Movie does not exist');
+    }
+
 
     this.movies = this.movies.map((movie: Movie) => movie.id === movieId ? {
       ...movie,
