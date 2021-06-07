@@ -33,6 +33,12 @@ You can start the project with:
 yarn start
 ```
 
+You can test the project with:
+
+```sh
+yarn test
+```
+
 # MovieRental API Specification
 
 # 1. Public Services
@@ -74,7 +80,7 @@ Returns user info and json web token.
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjE3MDc1OTIsImV4cCI6MTYyMTc5Mzk5Miwic3ViIjoiZTJmMDEwOGQtN2ZiYS00NDNjLWFlODQtZWRjODA3ZGYxNGQ3In0.IeEyZNtXDQaHa-
         a9-NY9c2nsKzWISt6jpRVgWSuBZP0"
     }
-    
+
 ### 1.2 Create User
 
 **Resource URL (public resource)**
@@ -108,7 +114,7 @@ Returns name and email of the user.
       "name": "john",
       "email": "me@hotmail.com"
     }
-    
+
 # 2. Movie Services
 
 ### IMPORTANT: All these services require the user to be logged on, and the user token must be sent in the Authorization Header in the Bearer token format.
@@ -216,7 +222,7 @@ Returns movie that was rented.
       "rented": true,
       "created_at": "2021-05-22T18:10:30.000Z"
     }
-    
+
 ### 2.4 Return A Movie
 
 **Resource URL (public resource)**
@@ -248,7 +254,7 @@ Returns movie that was returned.
       "rented": false,
       "created_at": "2021-05-22T18:10:30.000Z"
     }
-   
+
 
 ## Built with
 
