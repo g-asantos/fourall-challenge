@@ -5,7 +5,7 @@ import { app } from "../../../../app";
 
 let connection: Connection;
 
-describe("Create User Controller", () => {
+describe("Login User Controller", () => {
 
   beforeAll(async () => {
     connection = await createConnection();
